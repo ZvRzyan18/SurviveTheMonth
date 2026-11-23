@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dehywacy17g4u"]
 
-[ext_resource type="Material" uid="uid://bba530wy8is7v" path="res://material/terrain1.tres" id="1_i2nss"]
+[ext_resource type="Material" uid="uid://bba530wy8is7v" path="res://materials/terrain1.tres" id="1_i2nss"]
 [ext_resource type="ArrayMesh" uid="uid://7bvepul3gds1" path="res://models/terrain1.obj" id="1_qajbm"]
 [ext_resource type="Texture2D" uid="uid://dgj7j833stu03" path="res://textures/buildings_bg.jpg" id="3_2widg"]
 [ext_resource type="PackedScene" uid="uid://dlxi6v2mmy205" path="res://scenes/tree1.tscn" id="4_0uch5"]
@@ -27,6 +27,7 @@ mesh = SubResource("QuadMesh_tylf2")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.95409924, -0.27112716, 0.12721874, 3.5527135e-15, 0.42478403, 0.90529466, -0.2994904, -0.863741, 0.4052862, 0, 4, 0)
 light_color = Color(1, 0.9843137, 0.827451, 1)
+light_specular = 12.052
 shadow_enabled = true
 sky_mode = 1
 

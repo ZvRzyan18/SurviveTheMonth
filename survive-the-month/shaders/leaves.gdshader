@@ -58,8 +58,8 @@ void light() {
 	vec3 albedo = ALBEDO;
     DIFFUSE_LIGHT += (albedo + LIGHT_COLOR) * NdotL * attenuation * 0.3;
 
-    //vec3 view_dir = normalize(VIEW);
-    //vec3 half_dir = normalize(LIGHT + view_dir);
-    //float spec = pow(max(dot(NORMAL, half_dir), 0.0), 32.0);
-    //SPECULAR_LIGHT += LIGHT_COLOR * SPECULAR_AMOUNT * attenuation * spec * 0.08;
+    vec3 view_dir = normalize(VIEW);
+    vec3 half_dir = normalize(LIGHT + view_dir);
+    float spec = pow(max(dot(NORMAL, half_dir), 0.0), 32.0);
+    SPECULAR_LIGHT += LIGHT_COLOR * SPECULAR_AMOUNT * attenuation * spec * 0.28;
 }
