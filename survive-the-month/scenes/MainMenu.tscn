@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1d6d8em1c2qx"]
+[gd_scene load_steps=4 format=3 uid="uid://d1d6d8em1c2qx"]
 
 [ext_resource type="PackedScene" uid="uid://dehywacy17g4u" path="res://scenes/MainMenuBackground.tscn" id="1_yqorp"]
+[ext_resource type="Script" uid="uid://chaq174klvu0w" path="res://scripts/play_btn.gd" id="2_0ykhv"]
 
 [sub_resource type="Theme" id="Theme_yqorp"]
 default_font_size = 50
@@ -44,6 +45,7 @@ offset_bottom = 33.623993
 grow_horizontal = 2
 grow_vertical = 2
 text = "Play"
+script = ExtResource("2_0ykhv")
 
 [node name="settings_btn" type="Button" parent="."]
 layout_mode = 1

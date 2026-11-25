@@ -74,7 +74,7 @@ func _process(delta):
 		is_typing = false
 
 
-func show_dialogue():
+func show_dialogue():		
 	if current_dialogue < 0 or current_dialogue >= dialogues.size():
 		return
 
@@ -101,12 +101,13 @@ func _input(event):
 
 	if enter_timer > 0:
 		return
-
+	
 	enter_timer = enter_cooldown
 
 	# If this is the last message, disappear immediately
 	if current_dialogue == dialogues.size() - 1:
 		disappear_dialogue()
+		self.get_tree().change_scene_to_file("res://scenes/House.tscn");
 		return
 
 	# Move to the next message, even while typing

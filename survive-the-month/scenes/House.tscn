@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://do5vibxp2lpbl"]
+[gd_scene load_steps=37 format=3 uid="uid://do5vibxp2lpbl"]
 
 [ext_resource type="Material" uid="uid://djm3sdy32udiw" path="res://materials/floor_01.tres" id="1_bfmfj"]
 [ext_resource type="Material" uid="uid://dep3djxna6xty" path="res://materials/wall_01.tres" id="2_8twys"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://h44gosqjn2cy" path="res://scripts/Leaves.gd" id="12_hrmh6"]
 [ext_resource type="Shader" uid="uid://c5jffex1dqcl4" path="res://shaders/leaves.gdshader" id="13_71mv0"]
 [ext_resource type="Texture2D" uid="uid://xmyw868mmh62" path="res://textures/leaves_02.png" id="14_byxdd"]
+[ext_resource type="Material" uid="uid://iywfosaate5" path="res://materials/table_01.tres" id="15_hrmh6"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_247n2"]
 lightmap_size_hint = Vector2i(3, 3)
@@ -103,6 +104,8 @@ shader = ExtResource("3_ispqn")
 shader_parameter/texture1 = ExtResource("3_cmj1i")
 shader_parameter/texture_repeat = Vector2(20, 20)
 shader_parameter/normal_factor = Vector3(0, -1, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_71mv0"]
 
 [node name="House" type="Node3D"]
 
@@ -313,3 +316,17 @@ transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
 mesh = SubResource("PlaneMesh_s7x7r")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("1_bfmfj")
+
+[node name="Table" type="Node3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3669696, 0.6605139, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/Table"]
+transform = Transform3D(2.9906337, 0, 0, 0, 0.049843892, 0, 0, 0, 4.9843893, 0, 0, 0)
+layers = 2
+mesh = SubResource("BoxMesh_71mv0")
+surface_material_override/0 = ExtResource("15_hrmh6")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D/Table"]
+transform = Transform3D(0.68437696, 0, 0, 0, 0.88727444, 0, 0, 0, 0.6853428, 0, -0.45388883, 0)
+mesh = SubResource("BoxMesh_71mv0")
+surface_material_override/0 = ExtResource("15_hrmh6")
