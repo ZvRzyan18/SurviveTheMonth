@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SurviveTheMonth"
-run/main_scene="uid://bvxfdlk0dgc2d"
+run/main_scene="uid://b6ypkps0p7f65"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 

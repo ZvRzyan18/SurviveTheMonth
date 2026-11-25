@@ -1,0 +1,10 @@
+res://ollet_folder/scenes/SecondScene.tscn
+res://ollet_folder/shader/FirstScene.gdshader
+res://ollet_folder/scripts/carlo_image.gd
+res://ollet_folder/scripts/manager_change_image.gd
+res://ollet_folder/scripts/dialogue_first_scene.gd
+res://ollet_folder/scenes/FirstScene.tscn
+res://ollet_folder/scripts/first_scene.gd
+res://ollet_folder/scripts/label.gd
+res://scenes/tree1.tscn
+res://scripts/Leaves.gd
