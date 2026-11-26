@@ -107,7 +107,7 @@ func _input(event):
 	# If this is the last message, disappear immediately
 	if current_dialogue == dialogues.size() - 1:
 		disappear_dialogue()
-		self.get_tree().change_scene_to_file("res://scenes/House.tscn");
+		self.get_tree().change_scene_to_file("res://scenes/Gameplay.tscn");
 		return
 
 	# Move to the next message, even while typing

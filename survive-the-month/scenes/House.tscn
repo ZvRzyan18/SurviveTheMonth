@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://do5vibxp2lpbl"]
+[gd_scene load_steps=38 format=3 uid="uid://do5vibxp2lpbl"]
 
 [ext_resource type="Material" uid="uid://djm3sdy32udiw" path="res://materials/floor_01.tres" id="1_bfmfj"]
 [ext_resource type="Material" uid="uid://dep3djxna6xty" path="res://materials/wall_01.tres" id="2_8twys"]
@@ -104,6 +104,9 @@ shader = ExtResource("3_ispqn")
 shader_parameter/texture1 = ExtResource("3_cmj1i")
 shader_parameter/texture_repeat = Vector2(20, 20)
 shader_parameter/normal_factor = Vector3(0, -1, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hrmh6"]
+size = Vector3(2.109931, 0.013233937, 2.0120873)
 
 [sub_resource type="BoxMesh" id="BoxMesh_71mv0"]
 
@@ -300,10 +303,6 @@ transform = Transform3D(1, 0, 0, 0, 0.42618978, 0.90463376, 0, -0.90463376, 0.42
 shadow_enabled = true
 shadow_caster_mask = 4294967294
 
-[node name="Camera3D" type="Camera3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3351922, 3.9109325)
-visible = false
-
 [node name="ceiling" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(-8, 6.993822e-07, 0, -6.993822e-07, -8, 0, 0, 0, 8, 0, 2.9391117, 0)
 visible = false
@@ -316,6 +315,11 @@ transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
 mesh = SubResource("PlaneMesh_s7x7r")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("1_bfmfj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/floor/StaticBody3D"]
+shape = SubResource("BoxShape3D_hrmh6")
 
 [node name="Table" type="Node3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3669696, 0.6605139, 0)
