@@ -37,7 +37,7 @@ func _input(event : InputEvent):
 		y_axis.rotation.y += delta_position.x * sensitivity;
 		x_axis.rotation.x += delta_position.y * sensitivity;
 		
-		x_axis.rotation.x = clampf(x_axis.rotation.x, -0.2, 0.4);
+		x_axis.rotation.x = clampf(x_axis.rotation.x, -0.2, 0.2);
 		prev_position = mouse_motion.position
 		GlobalState.player_rotate.emit()
 

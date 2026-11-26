@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bne4o2t4oc1wp"]
 
-[ext_resource type="PackedScene" uid="uid://do5vibxp2lpbl" path="res://scenes/House.tscn" id="1_hghrp"]
+[ext_resource type="PackedScene" uid="uid://do5vibxp2lpbl" path="res://scenes/house/House.tscn" id="1_hghrp"]
 [ext_resource type="PackedScene" uid="uid://dfigwkob4edx" path="res://scenes/Character.tscn" id="2_i125h"]
 
 [node name="Scene4" type="Node3D"]

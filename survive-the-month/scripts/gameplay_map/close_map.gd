@@ -2,7 +2,7 @@ extends Button
 
 func on_click() :
 	self.get_tree().change_scene_to_file("res://scenes/Gameplay.tscn");
-	
+
 func _ready() -> void:
 	self.pressed.connect(on_click);
 

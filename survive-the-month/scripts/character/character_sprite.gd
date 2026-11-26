@@ -71,3 +71,4 @@ func _process(delta: float) -> void:
 			walk_frame += walk_frame_increment;
 	else :
 		timer = 0.0;
+		self.position = initial_position;
