@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://grqoiqewylcr"]
+
+[ext_resource type="Shader" uid="uid://dynrwgqnfvs0a" path="res://shaders/multiply_color.gdshader" id="1_cg8qh"]
+[ext_resource type="Texture2D" uid="uid://ccw26i7febgx0" path="res://textures/carpet.jpg" id="2_d52wf"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_cg8qh")
+shader_parameter/texture1 = ExtResource("2_d52wf")
+shader_parameter/base_color = Vector3(0.8, 0.3, 0.3)
+shader_parameter/normal_factor = Vector3(0, 1, 0)
