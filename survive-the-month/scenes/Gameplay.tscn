@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqc3d8x7n48vl"]
+[gd_scene load_steps=3 format=3 uid="uid://cqc3d8x7n48vl"]
 
 [ext_resource type="PackedScene" uid="uid://bne4o2t4oc1wp" path="res://scenes/Scene4.tscn" id="1_4aew2"]
+[ext_resource type="Script" uid="uid://csbm57640ur1c" path="res://scripts/gameplay/open_map.gd" id="2_75vxi"]
 
 [node name="Gameplay" type="Control"]
 layout_mode = 3
@@ -20,11 +21,13 @@ grow_vertical = 2
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
 size = Vector2i(1152, 648)
+render_target_update_mode = 4
 
 [node name="Scene4" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_4aew2")]
 
-[node name="map" type="Button" parent="."]
+[node name="open_map" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.96700007
@@ -37,6 +40,7 @@ offset_right = 21.01587
 offset_bottom = 15.335999
 text = "Map
 "
+script = ExtResource("2_75vxi")
 
 [node name="settings" type="Button" parent="."]
 layout_mode = 1
@@ -51,6 +55,7 @@ offset_right = 34.991943
 offset_bottom = 15.767998
 text = "Settings
 "
+metadata/_edit_use_anchors_ = true
 
 [node name="hint" type="Label" parent="."]
 layout_mode = 1

@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 
-const SPEED = 120.0
+const SPEED = 4.0
 const JUMP_VELOCITY = 4.5
 
 var y_axis : Node3D = null;
@@ -17,6 +17,9 @@ func _ready() -> void:
 	y_axis = self.find_child("y_axis");
 	x_axis = self.find_child("x_axis");
 	camera = self.find_child("camera_view");
+	y_axis.rotation.y = GlobalState.player_rotation.y;
+	x_axis.rotation.y = GlobalState.player_rotation.x;
+	self.position = GlobalState.player_position;
 
 func _input(event : InputEvent):
 		
@@ -48,15 +51,21 @@ func _physics_process(delta: float) -> void:
 	const pio2 : float = PI / 2.0;
 	
 	if Input.is_action_pressed("move_forward"):
-		self.velocity = Vector3(-sin(y_axis.rotation.y), self.velocity.y, -cos(y_axis.rotation.y)) * SPEED * delta;
+		self.velocity = Vector3(-sin(y_axis.rotation.y), self.velocity.y, -cos(y_axis.rotation.y)) * SPEED;
+		GlobalState.player_moving = true;
 	elif Input.is_action_pressed("move_backward"):
-		self.velocity = Vector3(sin(y_axis.rotation.y), self.velocity.y, cos(y_axis.rotation.y)) * SPEED * delta;
+		self.velocity = Vector3(sin(y_axis.rotation.y), self.velocity.y, cos(y_axis.rotation.y)) * SPEED;
+		GlobalState.player_moving = true;
 	elif Input.is_action_pressed("move_right"):
-		self.velocity = Vector3(sin(y_axis.rotation.y + pio2), self.velocity.y, cos(y_axis.rotation.y + pio2)) * SPEED * delta;
+		self.velocity = Vector3(sin(y_axis.rotation.y + pio2), self.velocity.y, cos(y_axis.rotation.y + pio2)) * SPEED;
+		GlobalState.player_moving = true;
 	elif Input.is_action_pressed("move_left"):
-		self.velocity = Vector3(-sin(y_axis.rotation.y + pio2), self.velocity.y, -cos(y_axis.rotation.y + pio2)) * SPEED * delta;
+		self.velocity = Vector3(-sin(y_axis.rotation.y + pio2), self.velocity.y, -cos(y_axis.rotation.y + pio2)) * SPEED;
+		GlobalState.player_moving = true;
 	else:
 		self.velocity *= Vector3(0.0, 1.0, 0.0);
+		GlobalState.player_moving = false;
+		
 	GlobalState.player_position = self.position;
 	GlobalState.player_rotation = Vector3(x_axis.rotation.x, y_axis.rotation.y, 0.0);
 	move_and_slide()
