@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://do5vibxp2lpbl"]
+[gd_scene load_steps=41 format=3 uid="uid://do5vibxp2lpbl"]
 
 [ext_resource type="Material" uid="uid://djm3sdy32udiw" path="res://materials/floor_01.tres" id="1_bfmfj"]
 [ext_resource type="Material" uid="uid://dep3djxna6xty" path="res://materials/wall_01.tres" id="2_8twys"]
@@ -43,6 +43,9 @@ albedo_texture = ExtResource("9_ea8vi")
 
 [sub_resource type="QuadMesh" id="QuadMesh_jilip"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_byxdd"]
+size = Vector3(1, 0.8, 2.1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_nwrc1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ea8vi"]
@@ -67,6 +70,9 @@ shader = ExtResource("3_ispqn")
 shader_parameter/texture1 = ExtResource("4_etd6b")
 shader_parameter/texture_repeat = Vector2(4, 1)
 shader_parameter/normal_factor = Vector3(-1, 0, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_71mv0"]
+size = Vector3(1, 1, 0.1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ea8vi"]
 render_priority = 0
@@ -109,6 +115,9 @@ shader_parameter/normal_factor = Vector3(0, -1, 0)
 size = Vector3(2.109931, 0.013233937, 2.0120873)
 
 [sub_resource type="BoxMesh" id="BoxMesh_71mv0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ryul8"]
+size = Vector3(3, 1, 5)
 
 [node name="House" type="Node3D"]
 
@@ -169,7 +178,7 @@ layers = 2
 mesh = SubResource("CylinderMesh_ryul8")
 surface_material_override/0 = SubResource("StandardMaterial3D_867yp")
 
-[node name="Bookshelf4" type="Node3D" parent="Node3D"]
+[node name="Bookshelf4" type="StaticBody3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.594298, 1.0091649, 3.0296261)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/Bookshelf4"]
@@ -183,7 +192,11 @@ transform = Transform3D(-8.742278e-08, 0, 1, 0, 0.8, 0, -2, 0, -4.371139e-08, 0.
 mesh = SubResource("QuadMesh_jilip")
 surface_material_override/0 = ExtResource("10_kjlmf")
 
-[node name="Bookshelf3" type="Node3D" parent="Node3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Bookshelf4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02485466, 0.24932802, 0)
+shape = SubResource("BoxShape3D_byxdd")
+
+[node name="Bookshelf3" type="StaticBody3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.594298, 0.19662416, 3.0296261)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/Bookshelf3"]
@@ -196,7 +209,11 @@ transform = Transform3D(-8.742278e-08, 0, 1, 0, 0.8, 0, -2, 0, -4.371139e-08, 0.
 mesh = SubResource("QuadMesh_jilip")
 surface_material_override/0 = ExtResource("10_kjlmf")
 
-[node name="Bookshelf2" type="Node3D" parent="Node3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Bookshelf3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02485466, 0.24932802, 0)
+shape = SubResource("BoxShape3D_byxdd")
+
+[node name="Bookshelf2" type="StaticBody3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.594298, 0.98818815, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/Bookshelf2"]
@@ -210,7 +227,11 @@ transform = Transform3D(-8.742278e-08, 0, 1, 0, 0.8, 0, -2, 0, -4.371139e-08, 0.
 mesh = SubResource("QuadMesh_jilip")
 surface_material_override/0 = ExtResource("10_kjlmf")
 
-[node name="Bookshelf1" type="Node3D" parent="Node3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Bookshelf2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02485466, 0.24932802, 0)
+shape = SubResource("BoxShape3D_byxdd")
+
+[node name="Bookshelf1" type="StaticBody3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.594298, 0.19662416, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/Bookshelf1"]
@@ -223,6 +244,10 @@ surface_material_override/0 = SubResource("StandardMaterial3D_l6do8")
 transform = Transform3D(-8.742278e-08, 0, 1, 0, 0.8, 0, -2, 0, -4.371139e-08, 0.5193196, 0.21572363, 0)
 mesh = SubResource("QuadMesh_jilip")
 surface_material_override/0 = ExtResource("10_kjlmf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Bookshelf1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02485466, 0.24932802, 0)
+shape = SubResource("BoxShape3D_byxdd")
 
 [node name="box2" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.0520658, 7.4319057, 0.3368051, 0.8272691)
@@ -268,11 +293,21 @@ mesh = SubResource("QuadMesh_bfmfj")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_kjlmf")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/wall6"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/wall6/StaticBody3D"]
+shape = SubResource("BoxShape3D_71mv0")
+
 [node name="wall5" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(5, 0, 0, 0, 3, 0, 0, 0, 1, 5.6756067, 1.5, -4.391639)
 mesh = SubResource("QuadMesh_bfmfj")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_ea8vi")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/wall5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/wall5/StaticBody3D"]
+shape = SubResource("BoxShape3D_71mv0")
 
 [node name="wall4" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(1.9079809e-07, 0, 1, 0, 3, 0, -16, 0, 1.1924881e-08, -8, 1.5, 0)
@@ -280,11 +315,21 @@ mesh = SubResource("QuadMesh_bfmfj")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_etd6b")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/wall4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/wall4/StaticBody3D"]
+shape = SubResource("BoxShape3D_71mv0")
+
 [node name="wall3" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(-6.993822e-07, 0, -1, 0, 3, 0, 16, 0, -4.371139e-08, 8, 1.5, 0)
 mesh = SubResource("QuadMesh_bfmfj")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_ispqn")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/wall3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/wall3/StaticBody3D"]
+shape = SubResource("BoxShape3D_71mv0")
 
 [node name="wall2" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(-16, 0, -8.742278e-08, 0, 3, 0, 1.3987644e-06, 0, -1, 0, 1.5, 8)
@@ -292,11 +337,21 @@ mesh = SubResource("QuadMesh_bfmfj")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_lr155")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/wall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/wall2/StaticBody3D"]
+shape = SubResource("BoxShape3D_71mv0")
+
 [node name="wall1" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(16, 0, 0, 0, 3, 0, 0, 0, 1, 0, 1.5, -8)
 mesh = SubResource("QuadMesh_bfmfj")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("2_8twys")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/wall1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/wall1/StaticBody3D"]
+shape = SubResource("BoxShape3D_71mv0")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 0.42618978, 0.90463376, 0, -0.90463376, 0.42618978, 0, 4.54723, 0)
@@ -321,7 +376,7 @@ surface_material_override/0 = ExtResource("1_bfmfj")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/floor/StaticBody3D"]
 shape = SubResource("BoxShape3D_hrmh6")
 
-[node name="Table" type="Node3D" parent="Node3D"]
+[node name="Table" type="StaticBody3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3669696, 0.6605139, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/Table"]
@@ -334,3 +389,7 @@ surface_material_override/0 = ExtResource("15_hrmh6")
 transform = Transform3D(0.68437696, 0, 0, 0, 0.88727444, 0, 0, 0, 0.6853428, 0, -0.45388883, 0)
 mesh = SubResource("BoxMesh_71mv0")
 surface_material_override/0 = ExtResource("15_hrmh6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.42648488, 0)
+shape = SubResource("BoxShape3D_ryul8")
