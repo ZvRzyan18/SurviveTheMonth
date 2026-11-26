@@ -1,0 +1,69 @@
+[gd_scene load_steps=22 format=3 uid="uid://cbqwy38sgdf0i"]
+
+[ext_resource type="Shader" uid="uid://bbxww18cc2cbw" path="res://ollet_folder/shader/FirstScene.gdshader" id="1_jsgfk"]
+[ext_resource type="Texture2D" uid="uid://c7a30xiq6h58r" path="res://ollet_folder/textures/outside_house.jpg" id="1_mp6wf"]
+[ext_resource type="Script" uid="uid://12u4a411jh85" path="res://ollet_folder/scripts/house_outside.gd" id="2_4cd51"]
+[ext_resource type="Texture2D" uid="uid://k62ws658hl40" path="res://ollet_folder/textures/1st_walk.jpg" id="3_jsgfk"]
+[ext_resource type="Texture2D" uid="uid://cgh8k1apjoh0a" path="res://ollet_folder/textures/2nd_walk.jpg" id="4_8g3wo"]
+[ext_resource type="Texture2D" uid="uid://sah8wf3golox" path="res://ollet_folder/textures/3rd_walk.jpg" id="5_443l3"]
+[ext_resource type="Texture2D" uid="uid://cp0e8aqj3jqw8" path="res://ollet_folder/textures/4th_walk.jpg" id="6_22gf8"]
+[ext_resource type="Texture2D" uid="uid://f8m17380u2wq" path="res://ollet_folder/textures/inside_house.jpg" id="8_8g3wo"]
+[ext_resource type="Texture2D" uid="uid://dad2epi0dtqsx" path="res://ollet_folder/textures/carlo_serious-removebg-preview.png" id="9_22gf8"]
+[ext_resource type="Texture2D" uid="uid://dmdjw4766wyna" path="res://ollet_folder/textures/maria-removebg-preview.png" id="10_6v4p4"]
+[ext_resource type="Script" uid="uid://bl5wm86wffaoc" path="res://ollet_folder/scripts/carlo_inside_house.gd" id="10_32qfu"]
+[ext_resource type="Texture2D" uid="uid://bv4s0s5ro7reo" path="res://ollet_folder/textures/carlo_crying-removebg-preview.png" id="11_6ghfi"]
+[ext_resource type="Script" uid="uid://m8sjibkutdu6" path="res://ollet_folder/scripts/maria_inside_house.gd" id="12_32qfu"]
+[ext_resource type="Texture2D" uid="uid://82qpq78oftm5" path="res://ollet_folder/textures/carlo_crying_while_standing-removebg-preview.png" id="12_ddxej"]
+[ext_resource type="Script" uid="uid://c58aq6ik7unx0" path="res://ollet_folder/scripts/carlo_and_maria_dialogue.gd" id="13_78wq3"]
+[ext_resource type="Texture2D" uid="uid://dfaov3dtln2ws" path="res://ollet_folder/textures/carlo_and_maria_hugging-removebg-preview.png" id="13_jrmqa"]
+[ext_resource type="Texture2D" uid="uid://cd0ep2bfnu68a" path="res://ollet_folder/textures/maria_confuse-removebg-preview.png" id="13_ofpx1"]
+[ext_resource type="Texture2D" uid="uid://cqh0iqyms3wy7" path="res://ollet_folder/textures/maria_shock-removebg-preview.png" id="14_7qcxj"]
+[ext_resource type="Texture2D" uid="uid://mo1hjp8e74lc" path="res://ollet_folder/textures/carlos_and_maria_eye_to_eye-removebg-preview.png" id="14_wu1gg"]
+[ext_resource type="Texture2D" uid="uid://m6omk6wg5b0a" path="res://ollet_folder/textures/maria_caring-removebg-preview.png" id="15_6ghfi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8g3wo"]
+shader = ExtResource("1_jsgfk")
+shader_parameter/blend_amount = 0.0
+
+[node name="ThirdScene" type="Node2D"]
+
+[node name="house_outside" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_8g3wo")
+position = Vector2(577, 326)
+scale = Vector2(0.84048533, 0.85541713)
+texture = ExtResource("1_mp6wf")
+script = ExtResource("2_4cd51")
+images = Array[Texture2D]([ExtResource("3_jsgfk"), ExtResource("4_8g3wo"), ExtResource("5_443l3"), ExtResource("6_22gf8"), ExtResource("1_mp6wf"), ExtResource("8_8g3wo")])
+fade_duration = 0.7
+display_duration = 0.7
+
+[node name="carlo" type="Sprite2D" parent="."]
+position = Vector2(219, 384)
+scale = Vector2(1.5135505, 1.4927748)
+texture = ExtResource("9_22gf8")
+script = ExtResource("10_32qfu")
+start_delay = 8.0
+textures = Array[Texture2D]([ExtResource("11_6ghfi"), ExtResource("12_ddxej"), ExtResource("13_jrmqa"), ExtResource("14_wu1gg")])
+enter_counts = Array[int]([8, 10, 15, 16])
+disappear_after_enter = 18
+
+[node name="maria" type="Sprite2D" parent="."]
+position = Vector2(907, 430.00003)
+scale = Vector2(1.4139028, 1.4604704)
+script = ExtResource("12_32qfu")
+start_delay = 10.0
+textures = Array[Texture2D]([ExtResource("10_6v4p4"), ExtResource("13_ofpx1"), ExtResource("14_7qcxj"), ExtResource("15_6ghfi")])
+enter_counts = Array[int]([1, 3, 7, 9])
+
+[node name="carlo_and_maria_dialogue" type="Label" parent="."]
+custom_minimum_size = Vector2(800, 0)
+offset_left = 177.0
+offset_top = 536.0
+offset_right = 977.0
+offset_bottom = 559.0
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("13_78wq3")
+start_delay = 10.0
+disappear_fade_duration = 1.0
+transition_duration = 1.0

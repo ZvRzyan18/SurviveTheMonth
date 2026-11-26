@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://djm3sdy32udiw"]
+
+[ext_resource type="Shader" uid="uid://djj4d2ive53nw" path="res://shaders/flat_repeat.gdshader" id="1_7aa32"]
+[ext_resource type="Texture2D" uid="uid://bhivdnvi3vmqa" path="res://textures/floor_01.jpg" id="2_cndsk"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_7aa32")
+shader_parameter/texture1 = ExtResource("2_cndsk")
+shader_parameter/texture_repeat = Vector2(20, 20)
+shader_parameter/normal_factor = Vector3(0, 1, 0)
