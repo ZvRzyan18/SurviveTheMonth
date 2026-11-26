@@ -37,7 +37,7 @@ func _input(event : InputEvent):
 		y_axis.rotation.y += delta_position.x * sensitivity;
 		x_axis.rotation.x += delta_position.y * sensitivity;
 		
-		x_axis.rotation.x = clampf(x_axis.rotation.x, -0.4, 0.4);
+		x_axis.rotation.x = clampf(x_axis.rotation.x, -0.2, 0.4);
 		prev_position = mouse_motion.position
 		GlobalState.player_rotate.emit()
 
@@ -49,7 +49,6 @@ func _physics_process(delta: float) -> void:
 		self.velocity.y = 0.0;
 		
 	const pio2 : float = PI / 2.0;
-	
 	if Input.is_action_pressed("move_forward"):
 		self.velocity = Vector3(-sin(y_axis.rotation.y), self.velocity.y, -cos(y_axis.rotation.y)) * SPEED;
 		GlobalState.player_moving = true;
