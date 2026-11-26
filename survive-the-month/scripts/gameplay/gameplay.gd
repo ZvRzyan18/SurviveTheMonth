@@ -23,6 +23,7 @@ func on_change_view(_id: int,_new_position: Vector3,_new_rotation: Vector3, path
 func _ready() -> void:
 	money_display = self.find_child("money_display");
 	day_display = self.find_child("day_display");
+	_init_ui();
 	
 	GlobalState.change_map.connect(on_change_view);
 	match GlobalState.map_id:
@@ -36,3 +37,26 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	money_display.text = "Money : " + str(GlobalState.player_money);
 	day_display.text = "Day : " + str(GlobalState.current_day);
+
+
+var open_map : Button = null;
+var open_quest : Button = null;
+var quest_panel : Panel = null;
+var close_quest : Button = null;
+
+func _init_ui():
+	open_map = self.find_child("open_map");
+	open_map.pressed.connect(func():
+		self.get_tree().change_scene_to_file("res://scenes/GameplayMap.tscn");
+	)
+	
+	open_quest = self.find_child("open_quest");
+	quest_panel = self.find_child("quest_panel");
+	open_quest.pressed.connect(func():
+		quest_panel.visible = true;
+	)
+	close_quest = self.find_child("close_quest");
+	close_quest.pressed.connect(func():
+		quest_panel.visible = false;
+	)
+	

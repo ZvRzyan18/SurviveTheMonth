@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://clg4q88eftb3s"]
+[gd_scene load_steps=35 format=3 uid="uid://clg4q88eftb3s"]
 
 [ext_resource type="Shader" uid="uid://djj4d2ive53nw" path="res://shaders/flat_repeat.gdshader" id="1_kaw4u"]
 [ext_resource type="Texture2D" uid="uid://bhivdnvi3vmqa" path="res://textures/floor_01.jpg" id="2_lrkwv"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://k4308xw0ufop" path="res://scripts/gameplay/house_enter1.gd" id="6_o5npa"]
 [ext_resource type="Texture2D" uid="uid://bea1n05pylrgq" path="res://textures/window_01.jpg" id="7_omuqq"]
 [ext_resource type="Script" uid="uid://vr32q53j641s" path="res://scripts/gameplay/sleep.gd" id="8_6fvjo"]
+[ext_resource type="Material" uid="uid://grqoiqewylcr" path="res://materials/carpet.tres" id="9_svt28"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4ghve"]
 
@@ -105,6 +106,10 @@ size = Vector3(4.5, 1, 9.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_svt28"]
 size = Vector3(14, 3, 11)
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_mtlfc"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_svt28"]
+
 [node name="Bedroom" type="Node3D"]
 
 [node name="floor" type="MeshInstance3D" parent="."]
@@ -116,12 +121,6 @@ surface_material_override/0 = SubResource("ShaderMaterial_v7soo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor/StaticBody3D"]
 shape = SubResource("BoxShape3D_irw0i")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.42618978, 0.90463376, 0, -0.90463376, 0.42618978, 0, 4.54723, 0)
-shadow_enabled = true
-shadow_opacity = 0.62
-shadow_caster_mask = 4294967294
 
 [node name="wall1" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1.359025e-06, 0, -3, 0, 15, 0, 31.09087, 0, -1.3113416e-07, 9.555629, 7.5, -0.178)
@@ -297,3 +296,53 @@ script = ExtResource("8_6fvjo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="sleep"]
 shape = SubResource("BoxShape3D_svt28")
+
+[node name="carpet1" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.09278474e-07, 0, 5, 0, 1, 0, -2.5, 0, -2.1855695e-07, 0, 0.1193589, -12.14604)
+mesh = SubResource("PlaneMesh_mtlfc")
+surface_material_override/0 = ExtResource("9_svt28")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.60455734, 0.7965616, 0, -0.7965616, 0.60455734, 0, 13.641689, 0)
+shadow_enabled = true
+shadow_opacity = 0.62
+shadow_caster_mask = 4294967294
+
+[node name="lamp" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.356067, 9.034313, 1.350852)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="lamp"]
+transform = Transform3D(0.5, 0, 0, 0, 0.40065715, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("CylinderMesh_svt28")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="lamp"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.37373447, 0)
+light_specular = 1.54
+shadow_enabled = true
+spot_range = 15.803707
+
+[node name="lamp2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.331017, 9.034313, -6.9403296)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="lamp2"]
+transform = Transform3D(0.5, 0, 0, 0, 0.40065715, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("CylinderMesh_svt28")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="lamp2"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.37373447, 0)
+light_specular = 1.54
+shadow_enabled = true
+spot_range = 15.803707
+
+[node name="lamp3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.331017, 9.034313, 9.678373)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="lamp3"]
+transform = Transform3D(0.5, 0, 0, 0, 0.40065715, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("CylinderMesh_svt28")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="lamp3"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.37373447, 0)
+light_specular = 1.54
+shadow_enabled = true
+spot_range = 15.803707
