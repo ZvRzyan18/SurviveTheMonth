@@ -13,11 +13,11 @@ var initial_position : Vector3 = Vector3.ZERO;
 func on_player_rotate():
 	if GlobalState.player_moving:
 		return;
-	var current_angle: float = wrapf(-GlobalState.player_rotation.y, 0.0, TAU);
-	var current_direction: int = roundi(current_angle / (PI / 4)) % 8;
-	var delta_dir: int = wrapi(current_direction - prev_direction, -4, 4);
+	var current_angle : float = wrapf(-GlobalState.player_rotation.y, 0.0, TAU);
+	var current_direction : int = roundi(current_angle / (PI / 4)) % 8;
+	var delta_dir : int = wrapi(current_direction - prev_direction, -4, 4);
 	direction = posmod(direction + delta_dir, 8);
-	var frame_dir: int = direction * self.hframes + 1;
+	var frame_dir : int = direction * self.hframes + 1;
 	self.flip_h = false;
 	if direction >= 5:
 		frame_dir = (8 - direction) * self.hframes + 1;
@@ -32,11 +32,11 @@ func _ready() -> void:
 	initial_position = self.position;
 	
 	#initialze current direction
-	var current_angle: float = wrapf(-GlobalState.player_rotation.y, 0.0, TAU);
-	var current_direction: int = roundi(current_angle / (PI / 4)) % 8;
-	var delta_dir: int = wrapi(current_direction - prev_direction, -4, 4);
+	var current_angle : float = wrapf(-GlobalState.player_rotation.y, 0.0, TAU);
+	var current_direction : int = roundi(current_angle / (PI / 4)) % 8;
+	var delta_dir : int = wrapi(current_direction - prev_direction, -4, 4);
 	direction = posmod(direction + delta_dir, 8);
-	
+	prev_direction = current_direction;
 
 
 
