@@ -3,11 +3,13 @@
 [ext_resource type="Script" uid="uid://dmmuupk2r4k8u" path="res://ollet_folder/scripts/day1_transition.gd" id="1_gyfu7"]
 [ext_resource type="Texture2D" uid="uid://cfaq6uirkn518" path="res://ollet_folder/textures/black_background.jpg" id="1_uf2pg"]
 [ext_resource type="Texture2D" uid="uid://dqmqaxdp20gd5" path="res://ollet_folder/textures/day1-removebg-preview.png" id="2_gyfu7"]
-[ext_resource type="PackedScene" path="res://scenes/Gameplay.tscn" id="2_s10ov"]
+[ext_resource type="PackedScene" uid="uid://cqc3d8x7n48vl" path="res://scenes/Gameplay.tscn" id="2_s10ov"]
 
 [node name="DayTransition" type="Node2D"]
 script = ExtResource("1_gyfu7")
 next_scene = ExtResource("2_s10ov")
+return_scene = ExtResource("2_s10ov")
+return_node_index = 1
 fade_in_duration = 2.0
 hold_duration = 1.0
 fade_out_duration = 1.0
