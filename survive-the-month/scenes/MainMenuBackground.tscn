@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://dehywacy17g4u"]
+
+[ext_resource type="Material" uid="uid://bba530wy8is7v" path="res://materials/terrain_01.tres" id="1_i2nss"]
+[ext_resource type="ArrayMesh" uid="uid://7bvepul3gds1" path="res://models/terrain1.obj" id="1_qajbm"]
+[ext_resource type="Texture2D" uid="uid://dgj7j833stu03" path="res://textures/buildings_bg.jpg" id="3_2widg"]
+[ext_resource type="PackedScene" uid="uid://dlxi6v2mmy205" path="res://scenes/tree1.tscn" id="4_0uch5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0uch5"]
+shading_mode = 0
+albedo_color = Color(0.7294118, 1, 1, 1)
+albedo_texture = ExtResource("3_2widg")
+
+[sub_resource type="QuadMesh" id="QuadMesh_tylf2"]
+
+[sub_resource type="Environment" id="Environment_0uch5"]
+tonemap_mode = 2
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_tylf2"]
+
+[node name="MainMenuBackground" type="Node3D"]
+
+[node name="bg_flat" type="MeshInstance3D" parent="."]
+transform = Transform3D(31.543491, 0, 0, 0, 8.9845495, 0, 0, 0, 2, 0, 1.0946858, -5.189727)
+material_override = SubResource("StandardMaterial3D_0uch5")
+mesh = SubResource("QuadMesh_tylf2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.95409924, -0.27112716, 0.12721874, 3.5527135e-15, 0.42478403, 0.90529466, -0.2994904, -0.863741, 0.4052862, 0, 4, 0)
+light_color = Color(1, 0.9843137, 0.827451, 1)
+light_specular = 7.763
+shadow_enabled = true
+sky_mode = 1
+
+[node name="terrain" type="MeshInstance3D" parent="."]
+transform = Transform3D(3.4442425, 0, 0, 0, 2, 0, 0, 0, 3.3050206, 0, 0, 0)
+material_override = ExtResource("1_i2nss")
+cast_shadow = 0
+mesh = ExtResource("1_qajbm")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.97472614, 0.22340326, 0, -0.22340326, 0.97472614, 0, 0.64165664, 5.1897345)
+
+[node name="Tree1" parent="." instance=ExtResource("4_0uch5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.469594, -0.009053111, 0.71706176)
+
+[node name="Tree2" parent="." instance=ExtResource("4_0uch5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5726418, -0.5554873, -4.752235)
+
+[node name="Tree3" parent="." instance=ExtResource("4_0uch5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8952422, -0.005734086, 0.41948795)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0uch5")
+camera_attributes = SubResource("CameraAttributesPractical_tylf2")
