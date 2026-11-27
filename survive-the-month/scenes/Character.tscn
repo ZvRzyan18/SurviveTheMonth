@@ -9,7 +9,7 @@ radius = 0.8
 height = 4.0
 
 [sub_resource type="Environment" id="Environment_apuoc"]
-tonemap_mode = 2
+tonemap_mode = 3
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_rguqb"]
 

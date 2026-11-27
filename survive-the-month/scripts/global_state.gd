@@ -6,6 +6,7 @@ var player_rotation : Vector3 = Vector3.ZERO;
 var player_moving : bool = false;
 
 var player_money : float = 18000.0;
+var player_money_savings : float = 0.0;
 var current_day : int = 1;
 
 #0 = house

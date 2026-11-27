@@ -34,6 +34,7 @@ func _input(event : InputEvent):
 				if GlobalState.current_day == 1:
 					GlobalState.current_day = 5;
 					scene_root.on_new_day.emit(GlobalState.current_day);
+					scene_root.find_child("Random_situation1").visible = true;
 				elif GlobalState.current_day == 5:
 					GlobalState.current_day = 30;
 					scene_root.on_new_day.emit(GlobalState.current_day);

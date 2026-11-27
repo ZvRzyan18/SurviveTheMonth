@@ -55,6 +55,10 @@ signal on_evaulation();
 
 var open_settings : Button = null;
 
+var close_random_situation1 : Button = null;
+var close_savings : Button = null;
+var open_costumize : Button = null;
+
 func _init_ui():
 	open_map = self.find_child("open_map");
 	open_map.pressed.connect(func():
@@ -94,4 +98,19 @@ func _init_ui():
 	open_settings = self.find_child("open_settings");
 	open_settings.pressed.connect(func():
 		self.find_child("Settings").visible = true;
+	);
+	
+	close_random_situation1 = self.find_child("close_random_situation1");
+	close_random_situation1.pressed.connect(func():
+		self.find_child("Random_situation1").visible = false;
+	);
+	
+	close_savings = self.find_child("close_savings");
+	close_savings.pressed.connect(func():
+		self.find_child("savings_panel").visible = false;
+	);
+	
+	open_costumize = self.find_child("open_costumize");
+	open_costumize.pressed.connect(func():
+		self.find_child("AvatarCostumize").visible = true;
 	);

@@ -9,86 +9,15 @@
 [ext_resource type="PackedScene" uid="uid://b6mwcefvlv0e4" path="res://scenes/Settings.tscn" id="6_gnmmn"]
 [ext_resource type="Texture2D" uid="uid://bwdunpicib76a" path="res://textures/wood_01.jpg" id="6_xbw1n"]
 [ext_resource type="Texture2D" uid="uid://ybrqws4cf4fd" path="res://ollet_folder/textures/skip_icon-removebg-preview.png" id="9_4j5yk"]
-[ext_resource type="Script" uid="uid://b36gmh7j537qb" path="res://ollet_folder/scripts/random_situation_1.gd" id="11_hlv5w"]
+[ext_resource type="Texture2D" uid="uid://3kyitu154ggq" path="res://textures/close_button.png" id="11_hlv5w"]
 [ext_resource type="Texture2D" uid="uid://d0j1xd4s0sx88" path="res://ollet_folder/textures/random_situation-removebg-preview.png" id="11_l501g"]
+[ext_resource type="PackedScene" uid="uid://dl6e8ua5g8p3y" path="res://scenes/AvatarCostumize.tscn" id="12_hlv5w"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xbw1n"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hsn8a"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4j5yk"]
-
-[sub_resource type="GDScript" id="GDScript_4j5yk"]
-script/source = "extends Sprite2D
-
-@export var nodes_to_show: Array[Sprite2D] = []
-@export var display_names: Array[String] = []
-
-var menu_layer: CanvasLayer
-var panel: Panel
-var container: VBoxContainer
-
-func _ready():
-	for node in nodes_to_show:
-		if node:
-			node.hide()
-
-	create_menu()
-
-func create_menu():
-	menu_layer = CanvasLayer.new()
-	get_tree().root.add_child.call_deferred(menu_layer)
-
-	panel = Panel.new()
-	panel.custom_minimum_size = Vector2(400, 350)
-	panel.set_anchors_preset(Control.PRESET_CENTER)
-	panel.position = Vector2(-200, -175)
-	menu_layer.add_child(panel)
-
-	container = VBoxContainer.new()
-	container.set_anchors_preset(Control.PRESET_FULL_RECT)
-	container.add_theme_constant_override(\"separation\", 12)
-	panel.add_child(container)
-
-	var title = Label.new()
-	title.text = \"CHOOSE WHAT TO SHOW\"
-	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	title.add_theme_font_size_override(\"font_size\", 24)
-	container.add_child(title)
-
-	for i in range(nodes_to_show.size()):
-		if nodes_to_show[i]:
-			var button = Button.new()
-
-			if i < display_names.size() and display_names[i] != \"\":
-				button.text = display_names[i]
-			else:
-				button.text = nodes_to_show[i].name
-
-			button.custom_minimum_size = Vector2(0, 55)
-			button.add_theme_font_size_override(\"font_size\", 20)
-			button.pressed.connect(_on_node_selected.bind(i))
-			container.add_child(button)
-
-	menu_layer.hide()
-
-func _input(event):
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			if get_rect().has_point(to_local(get_global_mouse_position())):
-				menu_layer.show()
-				get_viewport().set_input_as_handled()
-
-func _on_node_selected(id):
-	for node in nodes_to_show:
-		if node:
-			node.hide()
-
-	if id < nodes_to_show.size() and nodes_to_show[id]:
-		nodes_to_show[id].show()
-
-	menu_layer.hide()
-"
 
 [node name="Gameplay" type="Control"]
 layout_mode = 3
@@ -118,20 +47,19 @@ render_target_update_mode = 4
 [node name="open_map" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.16646539
-anchor_top = 0.24376544
-anchor_right = 0.026687516
-anchor_bottom = 0.37638274
-offset_left = 222.76813
-offset_top = 0.039993286
-offset_right = 696.256
-offset_bottom = 182.10399
-scale = Vector2(0.5266687, -0.51462466)
+anchor_left = 0.027
+anchor_top = 0.031000001
+anchor_right = 0.34500003
+anchor_bottom = 0.24400002
+offset_left = -0.10400009
+offset_top = 1.912014
+offset_right = 329.55997
+offset_bottom = 131.88799
+scale = Vector2(0.527, 0.515)
 text = "
 "
 icon = ExtResource("3_5sdaa")
 flat = true
-metadata/_edit_use_anchors_ = true
 
 [node name="open_settings" type="Button" parent="."]
 layout_mode = 1
@@ -178,14 +106,12 @@ metadata/_edit_use_anchors_ = true
 [node name="money_display" type="Label" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.49
-anchor_top = 0.48700002
-anchor_right = 0.49
-anchor_bottom = 0.48700002
-offset_left = -65.04
-offset_top = -11.480001
-offset_right = 64.96
-offset_bottom = 11.519999
+anchor_left = 0.143
+anchor_top = 0.275
+anchor_right = 0.80600005
+anchor_bottom = 0.85
+offset_left = -0.028001785
+offset_right = 0.023986816
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Money : 9999999"
 
@@ -206,14 +132,13 @@ metadata/_edit_use_anchors_ = true
 [node name="day_display" type="Label" parent="Panel2"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.70469564
-anchor_top = 0.48700005
-anchor_right = 0.70469564
-anchor_bottom = 0.48700005
-offset_left = -65.04
-offset_top = -11.480001
-offset_right = 64.96
-offset_bottom = 11.519999
+anchor_left = 0.13900001
+anchor_top = 0.32500002
+anchor_right = 1.2700001
+anchor_bottom = 0.90000004
+offset_left = 0.014998436
+offset_right = -0.05001831
+offset_bottom = 1.1444092e-05
 theme_override_colors/font_color = Color(0.0035191667, 0.0035191681, 0.0035191672, 1)
 text = "Day : 99"
 
@@ -243,6 +168,7 @@ icon = ExtResource("5_4rwr5")
 metadata/_edit_use_anchors_ = true
 
 [node name="quest_panel" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.01871528
@@ -338,6 +264,7 @@ text = " X "
 metadata/_edit_use_anchors_ = true
 
 [node name="evaluation_panel" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.3019653
@@ -350,8 +277,17 @@ offset_right = -0.2000122
 offset_bottom = -0.048034668
 metadata/_edit_use_anchors_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="evaluation_panel"]
-position = Vector2(255, 190)
+[node name="Sprite2D" type="TextureRect" parent="evaluation_panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.9999695
+offset_top = 4.0
+offset_right = -443.0001
+offset_bottom = -315.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(7.888022, 5.9045978)
 texture = ExtResource("6_xbw1n")
 
@@ -455,16 +391,129 @@ offset_bottom = 40.0
 visible = false
 layout_mode = 1
 
-[node name="Skip_button" type="Sprite2D" parent="." node_paths=PackedStringArray("nodes_to_show")]
-position = Vector2(1078, 224)
+[node name="open_costumize" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.9029237
+anchor_top = 0.31362966
+anchor_right = 0.9718681
+anchor_bottom = 0.4369753
+offset_left = -0.16809082
+offset_top = -0.23200989
+offset_right = 193.40796
+offset_bottom = 199.84
 scale = Vector2(0.2711225, 0.26463154)
-texture = ExtResource("9_4j5yk")
-script = SubResource("GDScript_4j5yk")
-nodes_to_show = [NodePath("../Random_situation1"), NodePath("../evaluation_panel/Sprite2D")]
-display_names = Array[String](["Day 5", "Close"])
+icon = ExtResource("9_4j5yk")
+flat = true
+metadata/_edit_use_anchors_ = true
 
-[node name="Random_situation1" type="Sprite2D" parent="."]
-position = Vector2(568, 346)
+[node name="Random_situation1" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.109000005
+anchor_top = 0.14500001
+anchor_right = 0.90800005
+anchor_bottom = 0.93000007
+offset_left = 0.4320221
+offset_top = 0.040023804
+offset_right = -251.01611
+offset_bottom = -135.63995
 scale = Vector2(1.3749952, 1.3628608)
 texture = ExtResource("11_l501g")
-script = ExtResource("11_hlv5w")
+
+[node name="close_random_situation1" type="Button" parent="Random_situation1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.78700006
+anchor_top = 0.09200001
+anchor_right = 0.94200003
+anchor_bottom = 0.24800001
+offset_left = 0.044189453
+offset_top = 0.17025375
+offset_right = 573.34937
+offset_bottom = 322.98224
+scale = Vector2(0.15272631, 0.15194888)
+icon = ExtResource("11_hlv5w")
+flat = true
+
+[node name="savings_panel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.36800003
+anchor_top = 0.335
+anchor_right = 0.63326395
+anchor_bottom = 0.5341605
+offset_left = 0.063964844
+offset_top = -0.08000183
+offset_right = 0.47991943
+offset_bottom = -0.13601685
+metadata/_edit_use_anchors_ = true
+
+[node name="close_savings" type="Button" parent="savings_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.91200006
+anchor_top = 0.004
+anchor_right = 1.0
+anchor_bottom = 0.133
+offset_left = 0.10397339
+offset_top = 0.035999954
+offset_bottom = -0.053001404
+text = " X "
+
+[node name="Label" type="Label" parent="savings_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.39900002
+anchor_right = 0.588
+anchor_bottom = 0.1
+offset_left = 0.10799408
+offset_top = 1.0
+offset_right = -0.104003906
+offset_bottom = -0.10000038
+text = "Savings"
+
+[node name="open_collect_savings" type="Button" parent="savings_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.04856208
+anchor_top = 0.38839543
+anchor_right = 0.9615621
+anchor_bottom = 0.62883735
+offset_left = 0.13999939
+offset_top = -0.103004456
+offset_right = -0.06402588
+offset_bottom = -0.12000275
+text = "Collect Savings
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="open_add_savings" type="Button" parent="savings_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.045294106
+anchor_top = 0.69759715
+anchor_right = 0.95829415
+anchor_bottom = 0.93803906
+offset_left = 0.13999939
+offset_top = 0.009994507
+offset_right = -0.06402588
+offset_bottom = -0.007003784
+text = "Add Savings
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="AvatarCostumize" parent="." instance=ExtResource("12_hlv5w")]
+visible = false
+layout_mode = 1
+anchor_left = 0.23730558
+anchor_top = 0.23316051
+anchor_right = 0.77630556
+anchor_bottom = 0.82616055
+offset_left = -0.37602234
+offset_top = -0.088005066
+offset_right = -0.37597656
+offset_bottom = -0.08798218
+metadata/_edit_use_anchors_ = true

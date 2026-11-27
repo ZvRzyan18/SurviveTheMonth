@@ -1,0 +1,117 @@
+[gd_scene load_steps=4 format=3 uid="uid://dl6e8ua5g8p3y"]
+
+[ext_resource type="Texture2D" uid="uid://c7y6v7re85h0i" path="res://textures/carlo_sprite.png" id="1_0j05i"]
+[ext_resource type="Script" uid="uid://cnchfmafwt14d" path="res://scripts/gameplay/avatar_costumize.gd" id="1_ojn7e"]
+[ext_resource type="Texture2D" uid="uid://bwdunpicib76a" path="res://textures/wood_01.jpg" id="2_w0axw"]
+
+[node name="AvatarCostumize" type="Panel"]
+anchors_preset = -1
+anchor_right = 0.53900003
+anchor_bottom = 0.59300005
+offset_right = 0.07196045
+offset_bottom = -0.2640381
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ojn7e")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.082
+anchor_top = 0.17400001
+anchor_right = 0.36900002
+anchor_bottom = 0.89800006
+offset_left = 0.077999115
+offset_top = 0.18399811
+offset_right = -0.14901733
+offset_bottom = 0.16796875
+texture = ExtResource("2_w0axw")
+
+[node name="character_sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(134, 200)
+scale = Vector2(2.859375, 2.7083333)
+texture = ExtResource("1_0j05i")
+hframes = 3
+vframes = 5
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.39800003
+anchor_top = 0.026
+anchor_right = 0.578
+anchor_bottom = 0.086
+offset_left = -0.15802002
+offset_top = 0.015999794
+offset_right = 0.0619812
+offset_bottom = -0.024002075
+text = "Avatar Editor"
+
+[node name="close_costumize" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.95000005
+anchor_top = 0.008
+anchor_right = 0.994
+anchor_bottom = 0.089
+offset_left = 0.049987793
+offset_top = -0.07200003
+offset_right = -0.27398682
+offset_bottom = -0.1760025
+text = " X "
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.411
+anchor_top = 0.187
+anchor_right = 0.95800006
+anchor_bottom = 0.27600002
+offset_left = -0.23100281
+offset_top = 0.19200134
+offset_right = 0.081970215
+offset_bottom = 0.015991211
+text = "Hairstyle"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.41422063
+anchor_top = 0.312
+anchor_right = 0.9612207
+anchor_bottom = 0.40100002
+offset_left = -0.23100281
+offset_top = 0.19200134
+offset_right = 0.081970215
+offset_bottom = 0.015991211
+text = "Accessories"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4077794
+anchor_top = 0.43179166
+anchor_right = 0.95477945
+anchor_bottom = 0.5207917
+offset_left = -0.23100281
+offset_top = 0.19200134
+offset_right = 0.081970215
+offset_bottom = 0.015991211
+text = "Clothes"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button4" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4093897
+anchor_top = 0.55679166
+anchor_right = 0.9563897
+anchor_bottom = 0.6457917
+offset_left = -0.23100281
+offset_top = 0.19200134
+offset_right = 0.081970215
+offset_bottom = 0.015991211
+text = "Pants"
+metadata/_edit_use_anchors_ = true
