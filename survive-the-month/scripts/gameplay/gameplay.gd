@@ -44,6 +44,17 @@ var open_quest : Button = null;
 var quest_panel : Panel = null;
 var close_quest : Button = null;
 
+var new_day_panel : Panel = null;
+var close_new_day : Button = null;
+var new_day_display : Label = null;
+signal on_new_day(day : int);
+
+var evaluation_panel : Panel = null;
+var close_evaluation : Button = null;
+signal on_evaulation();
+
+var open_settings : Button = null;
+
 func _init_ui():
 	open_map = self.find_child("open_map");
 	open_map.pressed.connect(func():
@@ -60,3 +71,27 @@ func _init_ui():
 		quest_panel.visible = false;
 	)
 	
+	new_day_panel = self.find_child("new_day_panel");
+	close_new_day = self.find_child("close_new_day");
+	close_new_day.pressed.connect(func():
+		new_day_panel.visible = false;
+	);
+	new_day_display = self.find_child("new_day_display");
+	on_new_day.connect(func(day : int):
+		new_day_display.text = "Day : " + str(day);
+		new_day_panel.visible = true;
+	);
+	
+	evaluation_panel = self.find_child("evaluation_panel");
+	close_evaluation = self.find_child("close_evaluation");
+	close_evaluation.pressed.connect(func():
+		evaluation_panel.visible = false;
+	);
+	on_evaulation.connect(func():
+		evaluation_panel.visible = true;
+	);
+	
+	open_settings = self.find_child("open_settings");
+	open_settings.pressed.connect(func():
+		self.find_child("Settings").visible = true;
+	);

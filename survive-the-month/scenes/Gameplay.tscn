@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqc3d8x7n48vl"]
+[gd_scene load_steps=7 format=3 uid="uid://cqc3d8x7n48vl"]
 
 [ext_resource type="PackedScene" uid="uid://bne4o2t4oc1wp" path="res://scenes/house/HouseView.tscn" id="1_4aew2"]
 [ext_resource type="Script" uid="uid://dnprqknd6cygd" path="res://scripts/gameplay/gameplay.gd" id="1_5sdaa"]
 [ext_resource type="Texture2D" uid="uid://w4o2koacwmii" path="res://textures/map_icon.png" id="3_5sdaa"]
 [ext_resource type="Texture2D" uid="uid://dp7k64sk4ui3g" path="res://ollet_folder/textures/setting_icon-removebg-preview-crop.png" id="4_a8mty"]
+[ext_resource type="Texture2D" uid="uid://c6gnrvsh7gc4e" path="res://textures/eval_5_star.png" id="5_jfxgp"]
+[ext_resource type="PackedScene" uid="uid://b6mwcefvlv0e4" path="res://scenes/Settings.tscn" id="6_gnmmn"]
 
 [node name="Gameplay" type="Control"]
 layout_mode = 3
@@ -48,7 +50,7 @@ icon = ExtResource("3_5sdaa")
 flat = true
 metadata/_edit_use_anchors_ = true
 
-[node name="settings" type="Button" parent="."]
+[node name="open_settings" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.887
@@ -205,3 +207,153 @@ item_count = 3
 item_0/text = "*  Buy a sack of rice"
 item_1/text = "*  Pay for Electricity Bill"
 item_2/text = "*  Pay for Water Bill"
+
+[node name="new_day_panel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.243
+anchor_top = 0.32900003
+anchor_right = 0.795
+anchor_bottom = 0.5930247
+offset_left = 0.06399536
+offset_top = -0.1920166
+offset_right = 0.15997314
+offset_bottom = -0.27999878
+metadata/_edit_use_anchors_ = true
+
+[node name="new_day_display" type="Label" parent="new_day_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.41545287
+anchor_top = 0.42136848
+anchor_right = 0.6004529
+anchor_bottom = 0.6663684
+offset_left = -0.22801208
+offset_top = -0.054008484
+offset_right = 0.111968994
+offset_bottom = 0.050994873
+theme_override_font_sizes/font_size = 30
+text = "DAY : 99"
+metadata/_edit_use_anchors_ = true
+
+[node name="close_new_day" type="Button" parent="new_day_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.9544025
+anchor_top = 0.01754386
+anchor_right = 0.99700004
+anchor_bottom = 0.19900002
+offset_right = -0.092041016
+offset_bottom = -0.029003143
+text = " X "
+metadata/_edit_use_anchors_ = true
+
+[node name="evaluation_panel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3019653
+anchor_top = 0.21000001
+anchor_right = 0.7449653
+anchor_bottom = 0.80100006
+offset_left = 0.13598633
+offset_top = -0.08000183
+offset_right = -0.2000122
+offset_bottom = -0.048034668
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="evaluation_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3647255
+anchor_top = 0.010443864
+anchor_right = 0.65872556
+anchor_bottom = 0.07844386
+offset_left = -0.010025024
+offset_top = 3.0
+offset_right = 0.049926758
+offset_bottom = -0.044000626
+text = "Monthly Evaluation"
+metadata/_edit_use_anchors_ = true
+
+[node name="close_evaluation" type="Button" parent="evaluation_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.94705874
+anchor_right = 1.0
+anchor_bottom = 0.081
+offset_right = -3.0517578e-05
+offset_bottom = -0.022994995
+text = " X "
+metadata/_edit_use_anchors_ = true
+
+[node name="stars" type="TextureRect" parent="evaluation_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.282
+anchor_top = 0.136
+anchor_right = 0.71800005
+anchor_bottom = 0.245
+offset_left = 0.17997742
+offset_top = -0.08800125
+offset_right = 394.81992
+offset_bottom = 74.165
+scale = Vector2(0.36000004, 0.36000025)
+texture = ExtResource("5_jfxgp")
+
+[node name="Label2" type="Label" parent="evaluation_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.314
+anchor_top = 0.30800003
+anchor_right = 0.688
+anchor_bottom = 0.36800003
+offset_left = -0.1400299
+offset_top = 0.035987854
+offset_right = 0.11993408
+offset_bottom = 0.055984497
+text = "Player Performance : 5/5"
+
+[node name="Label3" type="Label" parent="evaluation_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.363
+anchor_top = 0.44400004
+anchor_right = 0.651
+anchor_bottom = 0.5
+offset_left = -0.13002014
+offset_top = -0.052017212
+offset_right = -0.010040283
+offset_bottom = 1.5
+text = "Quest Done : 10/10"
+
+[node name="Label4" type="Label" parent="evaluation_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.32200003
+anchor_top = 0.577
+anchor_right = 0.72200006
+anchor_bottom = 0.637
+offset_left = -0.22003174
+offset_top = 0.008987427
+offset_right = -0.22006226
+offset_bottom = 0.0289917
+text = "Budgeting Decision : 10/10"
+
+[node name="Label5" type="Label" parent="evaluation_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.39400002
+anchor_top = 0.71000004
+anchor_right = 0.614
+anchor_bottom = 0.77000004
+offset_left = 0.05996704
+offset_top = 0.06997681
+offset_right = -0.14004517
+offset_bottom = 0.08999634
+text = "Overall : 10/10"
+
+[node name="Settings" parent="." instance=ExtResource("6_gnmmn")]
+visible = false
+layout_mode = 1

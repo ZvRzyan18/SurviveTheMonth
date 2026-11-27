@@ -31,4 +31,13 @@ func _input(event : InputEvent):
 		var input_key : InputEventKey = event as InputEventKey;
 		if input_key.pressed and not input_key.echo:
 			if input_key.keycode == KEY_E:
-				GlobalState.current_day += 1;
+				if GlobalState.current_day == 1:
+					GlobalState.current_day = 5;
+					scene_root.on_new_day.emit(GlobalState.current_day);
+				elif GlobalState.current_day == 5:
+					GlobalState.current_day = 30;
+					scene_root.on_new_day.emit(GlobalState.current_day);
+				elif GlobalState.current_day == 30:
+					scene_root.on_evaulation.emit();
+					GlobalState.current_day = 1;
+				

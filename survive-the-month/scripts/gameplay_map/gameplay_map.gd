@@ -71,6 +71,7 @@ var close_city : Button = null;
 var park_panel : Panel = null;
 var close_park : Button = null;
 
+var open_settings : Button = null;
 
 func _init_ui():
 	close_map = self.find_child("close_map");
@@ -94,4 +95,9 @@ func _init_ui():
 	close_park = self.find_child("close_park");
 	close_park.pressed.connect(func():
 		park_panel.visible = false;
+	);
+	
+	open_settings = self.find_child("open_settings");
+	open_settings.pressed.connect(func():
+		self.find_child("Settings").visible = true;
 	);
