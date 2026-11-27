@@ -1,11 +1,94 @@
-[gd_scene load_steps=7 format=3 uid="uid://cqc3d8x7n48vl"]
+[gd_scene load_steps=16 format=3 uid="uid://cqc3d8x7n48vl"]
 
 [ext_resource type="PackedScene" uid="uid://bne4o2t4oc1wp" path="res://scenes/house/HouseView.tscn" id="1_4aew2"]
 [ext_resource type="Script" uid="uid://dnprqknd6cygd" path="res://scripts/gameplay/gameplay.gd" id="1_5sdaa"]
 [ext_resource type="Texture2D" uid="uid://w4o2koacwmii" path="res://textures/map_icon.png" id="3_5sdaa"]
 [ext_resource type="Texture2D" uid="uid://dp7k64sk4ui3g" path="res://ollet_folder/textures/setting_icon-removebg-preview-crop.png" id="4_a8mty"]
+[ext_resource type="Texture2D" uid="uid://bmt7bgkagr2nt" path="res://ollet_folder/textures/quest_icon-removebg-preview.png" id="5_4rwr5"]
 [ext_resource type="Texture2D" uid="uid://c6gnrvsh7gc4e" path="res://textures/eval_5_star.png" id="5_jfxgp"]
 [ext_resource type="PackedScene" uid="uid://b6mwcefvlv0e4" path="res://scenes/Settings.tscn" id="6_gnmmn"]
+[ext_resource type="Texture2D" uid="uid://bwdunpicib76a" path="res://textures/wood_01.jpg" id="6_xbw1n"]
+[ext_resource type="Texture2D" uid="uid://ybrqws4cf4fd" path="res://ollet_folder/textures/skip_icon-removebg-preview.png" id="9_4j5yk"]
+[ext_resource type="Script" uid="uid://b36gmh7j537qb" path="res://ollet_folder/scripts/random_situation_1.gd" id="11_hlv5w"]
+[ext_resource type="Texture2D" uid="uid://d0j1xd4s0sx88" path="res://ollet_folder/textures/random_situation-removebg-preview.png" id="11_l501g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xbw1n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hsn8a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4j5yk"]
+
+[sub_resource type="GDScript" id="GDScript_4j5yk"]
+script/source = "extends Sprite2D
+
+@export var nodes_to_show: Array[Sprite2D] = []
+@export var display_names: Array[String] = []
+
+var menu_layer: CanvasLayer
+var panel: Panel
+var container: VBoxContainer
+
+func _ready():
+	for node in nodes_to_show:
+		if node:
+			node.hide()
+
+	create_menu()
+
+func create_menu():
+	menu_layer = CanvasLayer.new()
+	get_tree().root.add_child.call_deferred(menu_layer)
+
+	panel = Panel.new()
+	panel.custom_minimum_size = Vector2(400, 350)
+	panel.set_anchors_preset(Control.PRESET_CENTER)
+	panel.position = Vector2(-200, -175)
+	menu_layer.add_child(panel)
+
+	container = VBoxContainer.new()
+	container.set_anchors_preset(Control.PRESET_FULL_RECT)
+	container.add_theme_constant_override(\"separation\", 12)
+	panel.add_child(container)
+
+	var title = Label.new()
+	title.text = \"CHOOSE WHAT TO SHOW\"
+	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	title.add_theme_font_size_override(\"font_size\", 24)
+	container.add_child(title)
+
+	for i in range(nodes_to_show.size()):
+		if nodes_to_show[i]:
+			var button = Button.new()
+
+			if i < display_names.size() and display_names[i] != \"\":
+				button.text = display_names[i]
+			else:
+				button.text = nodes_to_show[i].name
+
+			button.custom_minimum_size = Vector2(0, 55)
+			button.add_theme_font_size_override(\"font_size\", 20)
+			button.pressed.connect(_on_node_selected.bind(i))
+			container.add_child(button)
+
+	menu_layer.hide()
+
+func _input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			if get_rect().has_point(to_local(get_global_mouse_position())):
+				menu_layer.show()
+				get_viewport().set_input_as_handled()
+
+func _on_node_selected(id):
+	for node in nodes_to_show:
+		if node:
+			node.hide()
+
+	if id < nodes_to_show.size() and nodes_to_show[id]:
+		nodes_to_show[id].show()
+
+	menu_layer.hide()
+"
 
 [node name="Gameplay" type="Control"]
 layout_mode = 3
@@ -35,15 +118,15 @@ render_target_update_mode = 4
 [node name="open_map" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.791
-anchor_top = 0.19438273
-anchor_right = 0.9841529
-anchor_bottom = 0.32700002
+anchor_left = -0.16646539
+anchor_top = 0.24376544
+anchor_right = 0.026687516
+anchor_bottom = 0.37638274
 offset_left = 222.76813
 offset_top = 0.039993286
 offset_right = 696.256
 offset_bottom = 182.10399
-scale = Vector2(-0.3200073, 0.27999878)
+scale = Vector2(0.5266687, -0.51462466)
 text = "
 "
 icon = ExtResource("3_5sdaa")
@@ -81,14 +164,15 @@ metadata/_edit_use_anchors_ = true
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0034722222
-anchor_top = 0.014098768
-anchor_right = 0.17747223
-anchor_bottom = 0.07609877
+anchor_left = 0.1467014
+anchor_top = 0.13292593
+anchor_right = 0.3207014
+anchor_bottom = 0.19492593
 offset_left = 4.0
 offset_top = -0.13600159
 offset_right = -0.4480133
 offset_bottom = -0.3120041
+theme_override_styles/panel = SubResource("StyleBoxEmpty_xbw1n")
 metadata/_edit_use_anchors_ = true
 
 [node name="money_display" type="Label" parent="Panel"]
@@ -102,19 +186,21 @@ offset_left = -65.04
 offset_top = -11.480001
 offset_right = 64.96
 offset_bottom = 11.519999
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Money : 9999999"
 
 [node name="Panel2" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0069444445
-anchor_top = 0.0974321
-anchor_right = 0.11063196
-anchor_bottom = 0.1594321
+anchor_left = 0.16059028
+anchor_top = 0.07428395
+anchor_right = 0.2642778
+anchor_bottom = 0.13628395
 offset_left = 4.0
 offset_top = -0.13600159
 offset_right = -0.4480133
 offset_bottom = -0.3120041
+theme_override_styles/panel = SubResource("StyleBoxEmpty_hsn8a")
 metadata/_edit_use_anchors_ = true
 
 [node name="day_display" type="Label" parent="Panel2"]
@@ -128,6 +214,7 @@ offset_left = -65.04
 offset_top = -11.480001
 offset_right = 64.96
 offset_bottom = 11.519999
+theme_override_colors/font_color = Color(0.0035191667, 0.0035191681, 0.0035191672, 1)
 text = "Day : 99"
 
 [node name="enter_hint" type="Label" parent="."]
@@ -142,19 +229,20 @@ text = "HINT : Press \"E\" to enter."
 [node name="open_quest" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.01426389
-anchor_top = 0.18712348
-anchor_right = 0.06226389
-anchor_bottom = 0.23412347
+anchor_left = 0.90402085
+anchor_top = 0.16243212
+anchor_right = 1.1317084
+anchor_bottom = 0.5844321
 offset_left = 0.5679989
 offset_top = -0.25601196
 offset_right = 0.27199554
 offset_bottom = 0.28799438
-text = "Quest"
+scale = Vector2(0.2744217, 0.26777917)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4j5yk")
+icon = ExtResource("5_4rwr5")
 metadata/_edit_use_anchors_ = true
 
 [node name="quest_panel" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.01871528
@@ -250,7 +338,6 @@ text = " X "
 metadata/_edit_use_anchors_ = true
 
 [node name="evaluation_panel" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.3019653
@@ -262,6 +349,11 @@ offset_top = -0.08000183
 offset_right = -0.2000122
 offset_bottom = -0.048034668
 metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="evaluation_panel"]
+position = Vector2(255, 190)
+scale = Vector2(7.888022, 5.9045978)
+texture = ExtResource("6_xbw1n")
 
 [node name="Label" type="Label" parent="evaluation_panel"]
 layout_mode = 1
@@ -354,6 +446,25 @@ offset_right = -0.14004517
 offset_bottom = 0.08999634
 text = "Overall : 10/10"
 
+[node name="TextureRect" type="TextureRect" parent="evaluation_panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Settings" parent="." instance=ExtResource("6_gnmmn")]
 visible = false
 layout_mode = 1
+
+[node name="Skip_button" type="Sprite2D" parent="." node_paths=PackedStringArray("nodes_to_show")]
+position = Vector2(1078, 224)
+scale = Vector2(0.2711225, 0.26463154)
+texture = ExtResource("9_4j5yk")
+script = SubResource("GDScript_4j5yk")
+nodes_to_show = [NodePath("../Random_situation1"), NodePath("../evaluation_panel/Sprite2D")]
+display_names = Array[String](["Day 5", "Close"])
+
+[node name="Random_situation1" type="Sprite2D" parent="."]
+position = Vector2(568, 346)
+scale = Vector2(1.3749952, 1.3628608)
+texture = ExtResource("11_l501g")
+script = ExtResource("11_hlv5w")
